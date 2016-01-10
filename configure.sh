@@ -12,10 +12,11 @@ echo "Creating folders"
 ### git
 
 echo "Configuring git"
-echo "Your email?"
+echo "Which email address do you want to use?"
 read email
 git config --global user.name "Kris-Mikael Krister"
 git config --global user.email "$email"
+git config --global push.default matching
 
 echo
 
