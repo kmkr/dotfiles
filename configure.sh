@@ -46,6 +46,11 @@ echo "Installing fonts"
 [ -d /usr/share/fonts/opentype/scp ] || sudo git clone https://github.com/adobe-fonts/source-code-pro.git /usr/share/fonts/opentype/scp
 sudo fc-cache -f -v
 
+echo "Configuring i3"
+[ -d ~/.i3 ] || cp i3/config ~/.i3
+cp i3/i3exit ~/bin/
+cp i3/i3status.conf ~/.i3status.conf
+
 echo
 echo
 
