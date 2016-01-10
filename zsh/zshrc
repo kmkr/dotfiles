@@ -1,0 +1,9 @@
+export ZSH=~/.oh-my-zsh
+ZSH_THEME="half-life"
+COMPLETION_WAITING_DOTS="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
+HIST_STAMPS="yyyy-mm-dd"
+plugins=(git)
+export PATH="~/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+source $ZSH/oh-my-zsh.sh
+export EDITOR='vim'
