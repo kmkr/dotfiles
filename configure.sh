@@ -27,7 +27,7 @@ ln -sf ~/git/vimrc/.vimrc ~/.vimrc
 
 echo "Configuring shell (zsh)"
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-chsh
+chsh -s /usr/bin/zsh
 cp zsh/zshrc ~/.zshrc
 
 echo
