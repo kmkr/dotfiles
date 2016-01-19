@@ -16,7 +16,8 @@ echo "Which email address do you want to use?"
 read email
 git config --global user.name "Kris-Mikael Krister"
 git config --global user.email "$email"
-git config --global push.default matching
+git config --global push.default current
+git config --global pull.rebase true
 
 echo
 
