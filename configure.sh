@@ -1,7 +1,7 @@
 #!/bin/sh
 
 echo "Installing dependencies"
-sudo apt-get install git zsh
+sudo apt-get install git zsh pcmanfm
 
 echo
 
@@ -56,6 +56,7 @@ echo "Configuring i3"
 [ -d ~/.i3 ] || cp i3/config ~/.i3
 cp i3/i3exit ~/bin/
 cp i3/i3status.conf ~/.i3status.conf
+xdg-mime default pcmanfm.desktop inode/directory
 
 echo
 echo
