@@ -17,7 +17,12 @@ read email
 git config --global user.name "Kris-Mikael Krister"
 git config --global user.email "$email"
 git config --global push.default current
-git config --global pull.rebase true
+echo "Do you want to set pull.rebase to true? y/[n]?"
+read gpr
+
+if [ "$gpr" -eq "y" ]; then
+    git config --global pull.rebase true
+fi
 
 echo
 
