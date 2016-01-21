@@ -53,7 +53,8 @@ echo "Installing fonts"
 sudo fc-cache -f -v
 
 echo "Configuring i3"
-[ -d ~/.i3 ] || cp i3/config ~/.i3
+mkdir ~/.i3
+[ -f ~/.i3/config ] || cp i3/config ~/.i3/
 cp i3/i3exit ~/bin/
 cp i3/i3status.conf ~/.i3status.conf
 xdg-mime default pcmanfm.desktop inode/directory
