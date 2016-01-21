@@ -1,7 +1,7 @@
 #!/bin/sh
 
 echo "Installing dependencies"
-sudo apt-get install vim git zsh pcmanfm
+sudo apt-get install i3 vim git zsh pcmanfm
 
 echo
 
@@ -20,7 +20,7 @@ git config --global push.default current
 echo "Do you want to set pull.rebase to true? y/[n]?"
 read gpr
 
-if [ "$gpr" -eq "y" ]; then
+if [ "$gpr" == "y" ]; then
     git config --global pull.rebase true
 fi
 
