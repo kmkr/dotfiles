@@ -1,7 +1,7 @@
 #!/bin/sh
 
 echo "Installing dependencies"
-sudo apt-get install git zsh pcmanfm
+sudo apt-get install vim git zsh pcmanfm
 
 echo
 
