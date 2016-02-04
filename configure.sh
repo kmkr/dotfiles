@@ -56,7 +56,7 @@ echo
 
 echo "Installing fonts"
 [ -d /usr/share/fonts/opentype ] || sudo mkdir /usr/share/fonts/opentype
-[ -d /usr/share/fonts/opentype/scp ] || sudo git clone https://github.com/adobe-fonts/source-code-pro.git /usr/share/fonts/opentype/scp
+[ -d /usr/share/fonts/opentype/scp ] || sudo git clone https://github.com/adobe-fonts/source-code-pro.git /usr/share/fonts/opentype/scp
 sudo fc-cache -f -v
 
 echo "Configuring i3"
