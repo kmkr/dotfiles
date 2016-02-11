@@ -27,7 +27,7 @@ git config --global alias.st "status"
 echo "Do you want to set pull.rebase to true? y/[n]?"
 read gpr
 
-if [ "$gpr" == "y" ]; then
+if [ "$gpr" = "y" ]; then
     git config --global pull.rebase true
 fi
 
@@ -50,7 +50,7 @@ sed -i s/PROMPT_COLOR/"$prompt_color"/ ~/.oh-my-zsh/themes/half-life-km.zsh-them
 echo
 
 echo "Configuring sublime"
-git clone https://github.com/kmkr/sublime3-settings.git ~/.config/sublime-text-3
+[ -d ~/.config/sublime-text-3 ] || git clone https://github.com/kmkr/sublime3-settings.git ~/.config/sublime-text-3
 
 echo
 
