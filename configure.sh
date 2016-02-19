@@ -40,6 +40,7 @@ if [ ! -d ~/.vim/bundle ]; then
 fi
 git clone https://github.com/kmkr/vimrc.git ~/git/vimrc
 ln -sf ~/git/vimrc/.vimrc ~/.vimrc
+vim -c "execute \"PluginInstall\" | qa"
 
 if [ ! -d ~/.zshrc ]; then
     echo "Configuring shell (zsh)"
@@ -78,7 +79,6 @@ fi
 echo
 echo
 
-echo "vim:     Run :PluginInstall to complete"
 echo "sublime: Install to complete: https://www.sublimetext.com/3"
 echo "sublime: Install package control to complete: https://packagecontrol.io/installation"
 echo "ssh:     Generate keys (ssh-keygen -t rsa -b 4096 -C \"$email\")"
