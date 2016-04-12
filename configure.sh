@@ -76,6 +76,10 @@ if [ ! -d ~/.i3 ]; then
     xdg-mime default pcmanfm.desktop inode/directory
 fi
 
+echo "Configuring auto wallpaper"
+
+cp random-wallpaper.sh ~/bin/
+
 echo
 echo
 
