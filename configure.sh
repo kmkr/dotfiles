@@ -12,51 +12,43 @@ echo "Creating folders"
 ### git
 
 echo "Configuring git"
-echo "Which email address do you want to use?"
+echo "Which email address do you want to use? Enter to skip git config"
 read email
-git config --global user.name "Kris-Mikael Krister"
-git config --global user.email "$email"
-git config --global push.default current
-git config --global alias.lol "log --graph --decorate --pretty=oneline --abbrev-commit"
-git config --global alias.lola "log --graph --decorate --pretty=oneline --abbrev-commit --all"
-git config --global alias.co "checkout"
-git config --global alias.br "branch"
-git config --global alias.ci "commit"
-git config --global alias.st "status"
 
-echo "Do you want to set pull.rebase to true? y/[n]?"
-read gpr
+if [ "$email" ]; then
+    git config --global user.name "Kris-Mikael Krister"
+    git config --global user.email "$email"
+    git config --global push.default current
+    git config --global alias.lol "log --graph --decorate --pretty=oneline --abbrev-commit"
+    git config --global alias.lola "log --graph --decorate --pretty=oneline --abbrev-commit --all"
+    git config --global alias.co "checkout"
+    git config --global alias.br "branch"
+    git config --global alias.ci "commit"
+    git config --global alias.st "status"
+    echo "Do you want to set pull.rebase to true? y/[n]?"
+    read gpr
 
-if [ "$gpr" = "y" ]; then
-    git config --global pull.rebase true
+    if [ "$gpr" = "y" ]; then
+        git config --global pull.rebase true
+    fi
 fi
 
 echo
-
-echo "Configuring vim"
 
 if [ ! -d ~/.vim/bundle ]; then
+    echo "Configuring vim"
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-fi
-git clone https://github.com/kmkr/vimrc.git ~/git/vimrc
-ln -sf ~/git/vimrc/.vimrc ~/.vimrc
-vim -c "execute \"PluginInstall\" | qa"
-
-if [ ! -d ~/.zshrc ]; then
-    echo "Configuring shell (zsh)"
-    sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-    chsh -s /usr/bin/zsh
-    cp zsh/zshrc ~/.zshrc
-    echo "Which color do you want on prompt? (turquoise / orange / purple / hotpink /limegreen)"
-    read prompt_color
-    cp zsh/half-life-km.zsh-theme ~/.oh-my-zsh/themes/
-    sed -i s/PROMPT_COLOR/"$prompt_color"/ ~/.oh-my-zsh/themes/half-life-km.zsh-theme
+    git clone https://github.com/kmkr/vimrc.git ~/git/vimrc
+    ln -sf ~/git/vimrc/.vimrc ~/.vimrc
+    vim -c "execute \"PluginInstall\" | qa"
 fi
 
 echo
 
-echo "Configuring sublime"
-[ -d ~/.config/sublime-text-3 ] || git clone https://github.com/kmkr/sublime3-settings.git ~/.config/sublime-text-3
+if [ ! -d ~/.config/sublime-text-3 ]; then
+    echo "Configuring sublime"
+    git clone https://github.com/kmkr/sublime3-settings.git ~/.config/sublime-text-3
+fi
 
 echo
 
@@ -66,9 +58,8 @@ if [ ! -d ~/fonts/adobe-fonts ]; then
     fc-cache -f -v ~/.fonts/adobe-fonts/source-code-pro
 fi
 
-echo "Configuring i3"
-
 if [ ! -d ~/.i3 ]; then
+    echo "Configuring i3"
     mkdir ~/.i3
     cp i3/config/config ~/.i3/config
     cp i3/i3exit ~/bin/
@@ -83,6 +74,18 @@ cp random-wallpaper.sh ~/bin/
 echo
 echo
 
+if [ ! -f ~/.zshrc ]; then
+    echo "Configuring shell (zsh)"
+    sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    cp zsh/zshrc ~/.zshrc
+    echo "Which color do you want on prompt? (turquoise / orange / purple / hotpink /limegreen)"
+    read prompt_color
+    cp zsh/half-life-km.zsh-theme ~/.oh-my-zsh/themes/
+    sed -i s/PROMPT_COLOR/"$prompt_color"/ ~/.oh-my-zsh/themes/half-life-km.zsh-theme
+fi
+
+
+echo "zshrc:   Run to complete: chsh -s /usr/bin/zsh"
 echo "sublime: Install to complete: https://www.sublimetext.com/3"
 echo "sublime: Install package control to complete: https://packagecontrol.io/installation"
 echo "ssh:     Generate keys (ssh-keygen -t rsa -b 4096 -C \"$email\")"
