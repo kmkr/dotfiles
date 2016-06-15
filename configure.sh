@@ -31,6 +31,13 @@ if [ "$email" ]; then
     if [ "$gpr" = "y" ]; then
         git config --global pull.rebase true
     fi
+
+    if [ ! -d ~/.diff-so-fancy ]; then
+        echo "Setting up diff-so-fancy"
+
+        git clone https://github.com/so-fancy/diff-so-fancy.git ~/.diff-so-fancy
+        git config --global core.pager "~/.diff-so-fancy/diff-so-fancy | less --tabs=4 -RFX"
+    fi
 fi
 
 echo
