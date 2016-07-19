@@ -6,3 +6,4 @@ plugins=(git dirhistory common-aliases command-not-found sublime)
 export PATH="$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 source $ZSH/oh-my-zsh.sh
 export EDITOR='vim'
+DISABLE_UPDATE_PROMPT=true
