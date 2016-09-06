@@ -1,7 +1,7 @@
 #!/bin/sh
 
 echo "Installing dependencies"
-sudo apt-get install i3 vim git zsh pcmanfm xfce4-screenshooter xbacklight feh
+sudo apt-get install i3 vim git zsh pcmanfm xfce4-screenshooter xbacklight feh mplayer smplayer
 
 echo
 
@@ -77,6 +77,7 @@ fi
 echo "Configuring auto wallpaper"
 
 cp random-wallpaper.sh ~/bin/
+cp sm-recurse-here ~/bin/
 
 echo
 echo

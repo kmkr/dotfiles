@@ -1,0 +1,1 @@
+find $PWD -iname \*.mp4 -o -iname \*.mkv -o -iname \*.wmv -o -iname \*.iso -o -iname \*.avi -o -iname \*.mpeg > /tmp/temp.m3u && smplayer /tmp/temp.m3u
