@@ -47,8 +47,10 @@ if [ ! -d ~/.vim/bundle ]; then
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
     git clone https://github.com/kmkr/vimrc.git ~/git/vimrc
     ln -sf ~/git/vimrc/.vimrc ~/.vimrc
-    vim -c "execute \"PluginInstall\" | qa"
+else
+    cd ~/git/vimrc ; git pull ; cd -
 fi
+vim -c "execute \"PluginInstall\" | qa"
 
 echo
 
