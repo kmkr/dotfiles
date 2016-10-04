@@ -55,8 +55,12 @@ vim -c "execute \"PluginInstall\" | qa"
 echo
 
 if [ ! -d ~/.config/sublime-text-3 ]; then
-    echo "Configuring sublime"
-    git clone https://github.com/kmkr/sublime3-settings.git ~/.config/sublime-text-3
+    echo "Do you want to configure sublime, y/[n]?"
+    read subl
+
+    if [ "$subl" = "y" ]; then
+        git clone https://github.com/kmkr/sublime3-settings.git ~/.config/sublime-text-3
+    fi
 fi
 
 echo
@@ -94,9 +98,9 @@ if [ ! -f ~/.zshrc ]; then
     sed -i s/PROMPT_COLOR/"$prompt_color"/ ~/.oh-my-zsh/themes/half-life-km.zsh-theme
 fi
 
-
 echo "zshrc:      Run to complete: chsh -s /usr/bin/zsh"
 echo "sublime:    Install to complete: https://www.sublimetext.com/3"
 echo "sublime:    Install package control to complete: https://packagecontrol.io/installation"
+echo "code:    Install to complete: https://code.visualstudio.com/docs/?dv=linux64_deb"
 echo "ssh:        Generate keys (ssh-keygen -t rsa -b 4096 -C \"$email\")"
 echo "wallpaper:  0,30 * * * * ~/bin/random-wallpaper.sh >/dev/null 2>&1"
