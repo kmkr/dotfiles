@@ -98,6 +98,12 @@ if [ ! -f ~/.zshrc ]; then
     sed -i s/PROMPT_COLOR/"$prompt_color"/ ~/.oh-my-zsh/themes/half-life-km.zsh-theme
 fi
 
+if [ ! -d ~/.npm-packages ]; then
+    echo "Configuring npm"
+    mkdir ~/.npm-packages
+    echo "prefix=~/.npm-packages" >> ~/.npmrc
+fi
+
 echo "zshrc:      Run to complete: chsh -s /usr/bin/zsh"
 echo "sublime:    Install to complete: https://www.sublimetext.com/3"
 echo "sublime:    Install package control to complete: https://packagecontrol.io/installation"

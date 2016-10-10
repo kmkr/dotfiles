@@ -3,7 +3,10 @@ ZSH_THEME="half-life-km"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="yyyy-mm-dd"
 plugins=(git dirhistory common-aliases command-not-found sublime)
-export PATH="$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+NPM_PACKAGES="${HOME}/.npm-packages"
+export PATH="$HOME/bin:$NPM_PACKAGES/bin:$PATH"
+unset MANPATH
+export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 source $ZSH/oh-my-zsh.sh
 export EDITOR='vim'
 DISABLE_UPDATE_PROMPT=true
