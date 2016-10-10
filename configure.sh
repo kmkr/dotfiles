@@ -1,7 +1,7 @@
 #!/bin/sh
 
 echo "Installing dependencies"
-sudo apt-get install i3 vim git zsh pcmanfm xfce4-screenshooter xbacklight feh mplayer smplayer
+sudo apt-get install i3 vim git zsh pcmanfm xfce4-screenshooter xbacklight feh mplayer smplayer autojump
 
 echo
 

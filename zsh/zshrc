@@ -2,7 +2,7 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="half-life-km"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="yyyy-mm-dd"
-plugins=(git dirhistory common-aliases command-not-found sublime)
+plugins=(git dirhistory common-aliases command-not-found sublime autojump)
 NPM_PACKAGES="${HOME}/.npm-packages"
 export PATH="$HOME/bin:$NPM_PACKAGES/bin:$PATH"
 unset MANPATH
