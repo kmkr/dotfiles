@@ -96,6 +96,13 @@ if [ ! -f ~/.zshrc ]; then
     read prompt_color
     cp zsh/half-life-km.zsh-theme ~/.oh-my-zsh/themes/
     sed -i s/PROMPT_COLOR/"$prompt_color"/ ~/.oh-my-zsh/themes/half-life-km.zsh-theme
+
+fi
+
+if [ ! -d ~/.fzf ]; then
+    echo "Configuring fuzzyfind"
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install
 fi
 
 if [ ! -d ~/.npm-packages ]; then
