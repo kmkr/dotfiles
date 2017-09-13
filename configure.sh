@@ -111,6 +111,8 @@ if [ ! -d ~/.npm-packages ]; then
     echo "prefix=~/.npm-packages" >> ~/.npmrc
 fi
 
+git remote set-url origin git@github.com:kmkr/dotfiles.git
+
 echo "zshrc:      Run to complete: chsh -s /usr/bin/zsh"
 echo "sublime:    Install to complete: https://www.sublimetext.com/3"
 echo "sublime:    Install package control to complete: https://packagecontrol.io/installation"
