@@ -205,3 +205,7 @@ exec --no-startup-id xset r rate 200 40
 
 bindsym Ctrl+$mod+Right move workspace to output DP1
 bindsym Ctrl+$mod+Left move workspace to output eDP1
+
+for_window [class="smplayer"] resize grow width
+for_window [class="smplayer"] resize grow width
+for_window [class="smplayer"] resize grow width
