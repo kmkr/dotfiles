@@ -1,7 +1,7 @@
 #!/bin/sh
 
 echo "Installing dependencies"
-sudo apt-get install curl i3 vim git zsh pcmanfm xfce4-screenshooter xbacklight feh mplayer smplayer autojump
+sudo apt-get install curl i3 vim git zsh pcmanfm xfce4-screenshooter xbacklight feh mplayer smplayer autojump fonts-firacode
 
 echo
 
@@ -64,12 +64,6 @@ if [ ! -d ~/.config/sublime-text-3 ]; then
 fi
 
 echo
-
-if [ ! -d ~/fonts/adobe-fonts ]; then
-    echo "Installing fonts"
-    git clone --depth 1 --branch release https://github.com/adobe-fonts/source-code-pro.git ~/.fonts/adobe-fonts/source-code-pro
-    fc-cache -f -v ~/.fonts/adobe-fonts/source-code-pro
-fi
 
 if [ ! -d ~/.i3 ]; then
     echo "Configuring i3"
