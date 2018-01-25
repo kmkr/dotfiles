@@ -90,7 +90,7 @@ if [ ! -f ~/.zshrc ]; then
     read prompt_color
     cp zsh/half-life-km.zsh-theme ~/.oh-my-zsh/themes/
     sed -i s/PROMPT_COLOR/"$prompt_color"/ ~/.oh-my-zsh/themes/half-life-km.zsh-theme
-
+    cp -r zsh/alias-tips ~/.oh-my-zsh/custom/
 fi
 
 if [ ! -d ~/.fzf ]; then
