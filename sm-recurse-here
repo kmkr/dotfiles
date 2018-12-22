@@ -1,1 +1,102 @@
-find $PWD -iname \*.mp4 -o -iname \*.mkv -o -iname \*.wmv -o -iname \*.iso -o -iname \*.avi -o -iname \*.mpeg > /tmp/temp.m3u && smplayer /tmp/temp.m3u
+#!/usr/bin/node
+
+const childProcess = require('child_process');
+const fs = require('fs');
+
+function fireUp(files) {
+    const toWrite = files.join('\n');
+    fs.writeFileSync('/tmp/temp.m3u', toWrite, { mode: 0o600 });
+    execFile('smplayer', ['/tmp/temp.m3u']);
+}
+
+function shuffle(a) {
+    var j, x, i;
+    for (i = a.length - 1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i + 1));
+        x = a[i];
+        a[i] = a[j];
+        a[j] = x;
+    }
+    return a;
+}
+
+function matchesFilters(file, filters) {
+    return filters.some(filter => file.includes(filter));
+}
+
+function distributeFiles(files, filters) {
+    const distribution = {};
+    function pushToDist(filter, file) {
+        if (distribution[filter]) {
+            distribution[filter].push(file);
+        } else {
+            distribution[filter] = [file]
+        }
+    }
+    files.forEach(file => {
+        let didMatch = false;
+        filters.forEach(filter => {
+            if (file.includes(filter)) {
+                pushToDist(filter, file);
+                didMatch = true;
+            }
+        });
+        if (!didMatch) {
+            pushToDist('unfiltered', file)
+        }
+    });
+    return distribution;
+}
+
+function handleArguments(args, files) {
+    const filterConfig = {};
+    let lastFilter;
+    args.forEach((arg, i) => {
+        if (i % 2 === 0) {
+            // keyword
+            lastFilter = arg.trim();
+        } else {
+            // percentage
+            filterConfig[lastFilter] = Number(arg.trim());
+        }
+    });
+
+    const filters = Object.keys(filterConfig);
+    const distribution = distributeFiles(files, filters);
+    console.log('Before filter');
+    Object.keys(distribution).forEach(filterName => {
+        console.log(`There are ${distribution[filterName].length} files in ${filterName}`);
+    });
+
+    const numFilesWithoutFilters = distribution.unfiltered.length;
+    const totalPercentageOfFilters = Object.values(filterConfig).reduce((acc, curVal) => acc + curVal, 0) / 100;
+    const numFilesTotalInTheEnd = Math.floor(numFilesWithoutFilters * (1 + totalPercentageOfFilters));
+
+    Object.keys(filterConfig).forEach(filterName => {
+        const percentage = filterConfig[filterName];
+        shuffle(distribution[filterName]);
+        distribution[filterName] = distribution[filterName].slice(0, (numFilesTotalInTheEnd * percentage) / 100);
+    });
+    console.log('After filter');
+    Object.keys(distribution).forEach(filterName => {
+        console.log(`There are ${distribution[filterName].length} files in ${filterName}`);
+    });
+    return [].concat.apply([], Object.values(distribution))
+}
+
+
+const execFile = childProcess.execFile;
+execFile('pwd', (err, stdout) => {
+    const cwd = stdout.trim();
+    const findArgs = `${cwd} -iname \*.mp4 -o -iname \*.mkv -o -iname \*.wmv -o -iname \*.iso -o -iname \*.avi -o -iname \*.mpeg`;
+    execFile('find', findArgs.split(' '), {maxBuffer: 1024 * 102400 }, function(err, stdout, stderr) {
+        const files = stdout.split('\n');
+        const [_, _2, ...args ] = process.argv;
+        if (args.length) {
+            fireUp(handleArguments(args, files));
+        } else {
+            fireUp(files);
+        }
+    });
+});
+
