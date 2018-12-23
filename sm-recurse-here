@@ -63,10 +63,14 @@ function handleArguments(args, files) {
 
     const filters = Object.keys(filterConfig);
     const distribution = distributeFiles(files, filters);
+    let total = 0;
     console.log('Before filter');
     Object.keys(distribution).forEach(filterName => {
-        console.log(`There are ${distribution[filterName].length} files in ${filterName}`);
+        const numFiles = distribution[filterName].length;
+        console.log(`There are ${numFiles} files in ${filterName}`);
+        total += numFiles;
     });
+    console.log(`Total ${total}`);
 
     const numFilesWithoutFilters = distribution.unfiltered.length;
     const totalPercentageOfFilters = Object.values(filterConfig).reduce((acc, curVal) => acc + curVal, 0) / 100;
@@ -81,7 +85,10 @@ function handleArguments(args, files) {
     Object.keys(distribution).forEach(filterName => {
         console.log(`There are ${distribution[filterName].length} files in ${filterName}`);
     });
-    return [].concat.apply([], Object.values(distribution))
+    const withDuplicates = [].concat.apply([], Object.values(distribution));
+    const noDuplicates = new Set(withDuplicates);
+    console.log(`Total ${noDuplicates.size} (${withDuplicates.length - noDuplicates.size} duplicates removed)`);
+    return [...noDuplicates];
 }
 
 
