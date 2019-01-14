@@ -86,10 +86,10 @@ if [ ! -f ~/.zshrc ]; then
     echo "Configuring shell (zsh)"
     sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     cp zsh/zshrc ~/.zshrc
-    echo "Which color do you want on prompt? (turquoise / orange / purple / hotpink /limegreen)"
-    read prompt_color
-    cp zsh/half-life-km.zsh-theme ~/.oh-my-zsh/themes/
-    sed -i s/PROMPT_COLOR/"$prompt_color"/ ~/.oh-my-zsh/themes/half-life-km.zsh-theme
+    echo "Which emoji do you want on prompt?"
+    read prompt_emoji
+    cp zsh/muse-km.zsh-theme ~/.oh-my-zsh/themes/
+    sed -i s/EMOJI=/EMOJI="$prompt_emoji"/ ~/.oh-my-zsh/themes/muse-km.zsh-theme
     cp -r zsh/alias-tips ~/.oh-my-zsh/custom/
 fi
 
