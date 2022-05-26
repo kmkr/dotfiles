@@ -97,6 +97,11 @@ fi
 
 git remote set-url origin git@github.com:kmkr/dotfiles.git
 
+if [ ! -d ~/.fnm ]; then
+    echo "Configuring fnm (node manager)"
+    curl -fsSL https://fnm.vercel.app/install | bash
+fi
+
 echo "zshrc:      Run to complete: chsh -s /usr/bin/zsh"
 echo "sublime:    Install to complete: https://www.sublimetext.com/3"
 echo "sublime:    Install package control to complete: https://packagecontrol.io/installation"
