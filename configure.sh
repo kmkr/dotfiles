@@ -54,16 +54,6 @@ vim -c "execute \"PluginInstall\" | qa"
 
 echo
 
-if [ ! -d ~/.config/sublime-text-3 ]; then
-    echo "Do you want to configure sublime, y/[n]?"
-    read subl
-
-    if [ "$subl" = "y" ]; then
-        git clone https://github.com/kmkr/sublime3-settings.git ~/.config/sublime-text-3
-    fi
-fi
-
-echo
 
 if [ ! -d ~/.i3 ]; then
     echo "Configuring i3"
