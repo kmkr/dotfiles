@@ -76,11 +76,7 @@ if [ ! -f ~/.zshrc ]; then
     echo "Configuring shell (zsh)"
     sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     cp zsh/zshrc ~/.zshrc
-    echo "Which emoji do you want on prompt?"
-    read prompt_emoji
-    cp zsh/muse-km.zsh-theme ~/.oh-my-zsh/themes/
-    sed -i s/EMOJI=/EMOJI="$prompt_emoji"/ ~/.oh-my-zsh/themes/muse-km.zsh-theme
-    cp -r zsh/alias-tips ~/.oh-my-zsh/custom/
+    curl -L https://raw.githubusercontent.com/sbugzu/gruvbox-zsh/master/gruvbox.zsh-theme > ~/.oh-my-zsh/custom/themes/gruvbox.zsh-theme
 fi
 
 if [ ! -d ~/.fzf ]; then
