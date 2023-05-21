@@ -106,6 +106,9 @@ unzip FiraCode.zip
 font-manager -i *.ttf
 cd -
 
+echo "Importing terminal profile"
+dconf load /org/gnome/terminal/legacy/profiles:/ < gnome-terminal-profiles.dconf
+
 echo "zshrc:      Run to complete: chsh -s /usr/bin/zsh"
 echo "ssh:        Generate keys (ssh-keygen -t rsa -b 4096 -C \"$email\")"
 echo "wallpaper:  0,30 * * * * ~/bin/random-wallpaper.sh >/dev/null 2>&1"
