@@ -1,7 +1,7 @@
 #!/bin/sh
 
 echo "Installing dependencies"
-sudo apt-get install curl i3 vim git zsh pcmanfm xfce4-screenshooter xbacklight feh mplayer smplayer autojump fonts-firacode
+sudo apt-get install curl i3 vim git zsh pcmanfm xfce4-screenshooter xbacklight feh mplayer smplayer autojump fonts-firacode font-manager
 
 echo
 
@@ -98,9 +98,14 @@ if [ ! -d ~/.fnm ]; then
     curl -fsSL https://fnm.vercel.app/install | bash
 fi
 
+echo "Installing FiraCode Nerd Font"
+mkdir /tmp/fc
+cd /tmp/fc
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.1/FiraCode.zip
+unzip FiraCode.zip
+font-manager -i *.ttf
+cd -
+
 echo "zshrc:      Run to complete: chsh -s /usr/bin/zsh"
-echo "sublime:    Install to complete: https://www.sublimetext.com/3"
-echo "sublime:    Install package control to complete: https://packagecontrol.io/installation"
-echo "code:    Install to complete: https://code.visualstudio.com/docs/?dv=linux64_deb"
 echo "ssh:        Generate keys (ssh-keygen -t rsa -b 4096 -C \"$email\")"
 echo "wallpaper:  0,30 * * * * ~/bin/random-wallpaper.sh >/dev/null 2>&1"
