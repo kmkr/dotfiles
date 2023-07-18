@@ -1,4 +1,4 @@
 @theme "gruvbox-dark-soft"
 * {
-    font: "Fira Code";
+    font: "FiraCode Nerd Font";
 }
