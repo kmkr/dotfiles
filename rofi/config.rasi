@@ -1,4 +1,18 @@
-@theme "gruvbox-dark-soft"
 * {
     font: "FiraCode Nerd Font";
+}
+@theme "gruvbox-dark-soft"
+
+element {
+  children: [ element-icon, element-text ];
+  spacing: 5px;
+}
+
+element-icon {
+  padding: 10px;
+  size: 1.1em;
+}
+
+element-text {
+  vertical-align: 0.5;
 }
