@@ -58,17 +58,19 @@ echo
 if [ ! -d ~/.i3 ]; then
     echo "Configuring i3"
     mkdir ~/.i3
-    cp i3/config/config ~/.i3/config
-    cp i3/i3exit ~/bin/
+    ln -sf ~/git/dotfiles/i3/config ~/.i3/config
+    ln -sf ~/git/dotfiles/i3/i3exit ~/bin/i3exit
     xdg-mime default pcmanfm.desktop inode/directory
 fi
 
 if [ ! -d ~/.config/polybar ]; then
-    cp -r polybar ~/.config/
+    mkdir ~/.config/polybar
+    ln -sf ~/git/dotfiles/polybar ~/.config/polybar
 fi
 
 if [ ! -d ~/.config/rofi ]; then
-    cp -r rofi ~/.config/
+    mkdir ~/config/rofi
+    ln -sf ~/git/dotfiles/rofi/config.rasi ~/.config/rofi/config.rasi
 fi
 
 echo "Configuring auto wallpaper"
