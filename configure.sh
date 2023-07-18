@@ -64,12 +64,11 @@ if [ ! -d ~/.i3 ]; then
 fi
 
 if [ ! -d ~/.config/polybar ]; then
-    mkdir ~/.config/polybar
     ln -sf ~/git/dotfiles/polybar ~/.config/polybar
 fi
 
 if [ ! -d ~/.config/rofi ]; then
-    mkdir ~/config/rofi
+    mkdir ~/.config/rofi
     ln -sf ~/git/dotfiles/rofi/config.rasi ~/.config/rofi/config.rasi
 fi
 
