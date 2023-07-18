@@ -1,7 +1,7 @@
 #!/bin/sh
 
 echo "Installing dependencies"
-sudo apt-get install curl i3 vim git zsh pcmanfm xfce4-screenshooter xbacklight feh mplayer smplayer autojump fonts-firacode font-manager
+sudo apt-get install curl i3 vim git zsh pcmanfm xfce4-screenshooter xbacklight feh mplayer smplayer autojump fonts-firacode font-manager rofi polybar
 
 echo
 
@@ -60,8 +60,15 @@ if [ ! -d ~/.i3 ]; then
     mkdir ~/.i3
     cp i3/config/config ~/.i3/config
     cp i3/i3exit ~/bin/
-    cp i3/i3status.conf ~/.i3status.conf
     xdg-mime default pcmanfm.desktop inode/directory
+fi
+
+if [ ! -d ~/.config/polybar ]; then
+    cp -r polybar ~/.config/
+fi
+
+if [ ! -d ~/.config/rofi ]; then
+    cp -r rofi ~/.config/
 fi
 
 echo "Configuring auto wallpaper"

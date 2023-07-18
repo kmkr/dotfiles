@@ -1,0 +1,4 @@
+@theme "gruvbox-dark-soft"
+* {
+    font: "Fira Code";
+}
