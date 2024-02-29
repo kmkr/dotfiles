@@ -183,7 +183,7 @@ bindsym $mod+Print exec xfce4-screenshooter
 exec --no-startup-id xautolock -time 10 -locker "i3lock -d -c 000000"
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
-exec --no-startup-id sh ~/bin/random-wallaper.sh
+exec_always --no-startup-id ~/bin/random-wallaper.sh
 exec --no-startup-id xset r rate 200 40
 exec --no-startup-id emote
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
