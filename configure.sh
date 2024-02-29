@@ -19,6 +19,7 @@ if [ "$email" ]; then
     git config --global user.name "Kris-Mikael Krister"
     git config --global user.email "$email"
     git config --global push.default current
+    git config --global rerere.enabled true
     git config --global alias.lol "log --graph --decorate --pretty=oneline --abbrev-commit"
     git config --global alias.lola "log --graph --decorate --pretty=oneline --abbrev-commit --all"
     git config --global alias.co "checkout"
