@@ -19,6 +19,7 @@ if [ "$email" ]; then
     git config --global user.name "Kris-Mikael Krister"
     git config --global user.email "$email"
     git config --global push.default current
+    git config --global gpg.format ssh
     git config --global rerere.enabled true
     git config --global alias.lol "log --graph --decorate --pretty=oneline --abbrev-commit"
     git config --global alias.lola "log --graph --decorate --pretty=oneline --abbrev-commit --all"
@@ -86,6 +87,7 @@ if [ ! -f ~/.zshrc ]; then
     sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     cp zsh/zshrc ~/.zshrc
     curl -L https://raw.githubusercontent.com/sbugzu/gruvbox-zsh/master/gruvbox.zsh-theme > ~/.oh-my-zsh/custom/themes/gruvbox.zsh-theme
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 fi
 
 if [ ! -d ~/.fzf ]; then

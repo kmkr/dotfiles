@@ -1,7 +1,7 @@
 * {
     font: "FiraCode Nerd Font";
 }
-@theme "gruvbox-dark-soft"
+//@theme "gruvbox-dark-soft"
 
 element {
   children: [ element-icon, element-text ];
@@ -16,3 +16,4 @@ element-icon {
 element-text {
   vertical-align: 0.5;
 }
+@theme "/usr/share/rofi/themes/gruvbox-dark-hard.rasi"
